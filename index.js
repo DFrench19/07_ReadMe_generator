@@ -35,7 +35,7 @@ const questions = [
     {
         type: 'input',
         message: 'What command should be run to run tests?',
-        name: 'command',
+        name: 'test',
     },
     {
         type: 'input',
@@ -45,9 +45,32 @@ const questions = [
     {
         type: 'input',
         message: 'What does the user need to know about contirbuting to the repo?',
-        name: 'desctiption',
+        name: 'contirbuting',
     },
-];
+]
+.then(({name, email, description, github, license, info, contirbuting, test, command}) => {
+    const html = `<!DOCTYPE html>
+    <html lang=“en-us”>
+    <body>
+        <p>${ github }</p>
+        <p>${ email }</p>
+        <p>${ name }</p>
+        <p> ${description }</p>
+        <p>${ license }</p>
+        <p>${ info }</p>
+        <p>${ contirbuting }</p>
+        <p> ${test }</p>
+        <p>${ command }</p>
+    </body>
+</html>`
+
+
+
+
+
+
+
+
 
 // function to write README file
 function writeToFile(fileName, data) {
@@ -60,3 +83,5 @@ function init() {
 
 // function call to initialize program
 init();
+
+})
