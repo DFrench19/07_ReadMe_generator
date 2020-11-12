@@ -1,12 +1,13 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
+const generateMarkdown = require('./generateMarkdown.js')
 
 
 
 // array of questions for user
 const questions =
-([
+    ([
         {
             type: 'input',
             message: 'What is your GitHub username?',
@@ -20,7 +21,7 @@ const questions =
         {
             type: 'input',
             message: 'What is your project name.',
-            name: 'name',
+            name: 'Title',
         },
         {
             type: 'input',
@@ -30,7 +31,7 @@ const questions =
         {
             type: 'input',
             message: 'What kind of license should your project have?',
-            choices:["MIT","APACHE 2.0","GPL","BSD3"],
+            choices: ["MIT", "APACHE 2.0", "GPL", "BSD3"],
             name: 'license',
         },
 
@@ -57,30 +58,34 @@ const questions =
         },
     ])
 
-        // function to write README file
-       function writeToFile(fileName, date) {
-           fs.writeFile(fileName, html, err => {
-               if (err) {
-                   return console.log(err);
-               }
-               console.log("Generating ReadMe....")
-           })
-       }
-       const writeFileAsync = util.promisify(writeToFile);
-
-        // // function to initialize program
-     async function init() {
-            try {
-                const userResponses = await inquirer.prompt(questions);
-        console.log("Your responses: ", userResponses);
-
-            }
-            finally {
-
-            }
+// function to write README file
+function writeToFile(fileName, date) {
+   fs.writeFile(fileName, date, err => {
+        if (err) {
+            return console.log(err);
         }
+        console.log("Generating ReadMe....")
+    })
+}
+const writeFileAsync = util.promisify(writeToFile);
 
-        // // function call to initialize program
-        init();
+// // function to initialize program
+async function init() {
+    try {
+        const Responses = await inquirer.prompt(questions);
+        console.log("Your responses: ", Responses);
 
-  
+        console.log("Generating README...")
+        const markDown = generateMarkdown(Responses);
+        console.log(markDown);
+
+        await writeFileAsync('README.md', markDown);
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+
+// // function call to initialize program
+init();
+
