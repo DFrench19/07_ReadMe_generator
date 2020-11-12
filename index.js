@@ -29,6 +29,7 @@ inquirer
         {
             type: 'input',
             message: 'What kind of license should your project have?',
+            choices:["MIT","APACHE 2.0","GPL","BSD3"],
             name: 'license',
         },
 
@@ -57,12 +58,12 @@ inquirer
     .then(({ name, email, description, github, license, info, contirbuting, test, command }) => {
         const html =
 
-     `<!DOCTYPE html>
+            `<!DOCTYPE html>
     <html lang=“en-us”>
     <body>
+        <h1> ${name}</h1>
         <p> ${github}</p>
         <p> ${email}</p>
-        <p> ${name}</p>
         <p> ${description}</p>
         <p> ${license}</p>
         <p> ${info}</p>
@@ -70,11 +71,11 @@ inquirer
         <p> ${test}</p>
         <p> ${command}</p>
     </body>
-</html>`
+</html>`;
 
         // function to write README file
         fs.writeFile('index.html', html, err => err ? console.error(err) :
-            console.log("Success!"));
+            console.log("Generating ReadME!"));
 
         // // function to initialize program
         function init() {
