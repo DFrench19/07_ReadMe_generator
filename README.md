@@ -23,7 +23,7 @@
 
     this is a simple readme 
 
-   ![ReadMe Gif](readme-demo.gif)
+   ![ReadMe Gif](ReadMe_Demo.gif)
 
     #Tests
 
