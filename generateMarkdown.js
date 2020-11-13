@@ -48,8 +48,11 @@ function generateMarkdown(Responses) {
     #Information
 
     -steps on how to use the application
-    `
-  }
+
+    ${Responses.info}`
+  };
+
+  
   return markDown;
 
 }
