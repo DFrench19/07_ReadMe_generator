@@ -4,55 +4,102 @@ function generateMarkdown(Responses) {
 
   if (Responses.command !== '') {
     draft += `
-  - [Command](#command)`};
+   [Command](#command)`};
   if (Responses.info !== '') {
     draft += `
-  - [Info](#info)`};
+   [Info](#info)`};
   if (Responses.contributing !== '') {
     draft += `
-  - [Contributing](#contributing)`};
+   [Contributing](#contributing)`};
   if (Responses.test !== '') {
     draft += `
-  - [Test](#test)`};
+   [Test](#test)`};
+   if (Responses.license !== '') {
+    draft += `
+   [License](#license)`};
 
-  let markDown =
-    `# ${Responses.title}`
-
+  let markDown =``
   if (Responses.title !== '') {
-    markDown += `
-    [Title](#title)`};
+    markDown +=
+      `
+     ${Responses.title}`
+  }
 
-  let draft2 = `Description`;
+  markDown += draft
+
+  if (Responses.github !== '') {
+    markDown +=
+      `
+  
+      ${Responses.github}`
+  };
+
 
   if (Responses.description !== '') {
-    draft2 += `
-  - [Description](#description)`};
+    markDown +=
+      `
 
-  markDown += draft;
-  markDown+= `
-  -[License](#license)`;
-
+      #Description
+  
+      ${Responses.description}`
+  };
+  
   if (Responses.command !== '') {
     markDown +=
-    `
+      `
+
     #Install
 
-    -How to install appilacation-
 
     ${Responses.command}`
   };
 
-  if (Responses.info !=='') {
-    markDown =+
-    `
-    #Information
+  if (Responses.info !== '') {
+    markDown +=
+      `
 
-    -steps on how to use the application
+    #Information
 
     ${Responses.info}`
   };
 
-  
+  if (Responses.contributing !== '') {
+    markDown +=
+      `
+
+    #Contributing
+
+
+    ${Responses.contributing}`
+  };
+
+  if (Responses.test !== '') {
+    markDown +=
+      `
+
+    #Tests
+
+    ${Responses.test}`
+  };
+
+  if (Responses.license !== '') {
+    markDown +=
+      `
+
+    #License
+
+    ${Responses.license}`
+  };
+  if (Responses.email !== '') {
+    markDown +=
+      `
+
+    #Email
+
+
+    ${Responses.email}`
+  };
+
   return markDown;
 
 }
