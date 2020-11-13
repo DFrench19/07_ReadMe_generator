@@ -1,5 +1,7 @@
+   ReadMe Generator
 
-     undefinedTable of Contents
+
+   Table of Contents
    [Command](#command)
    [Info](#info)
    [Contributing](#contributing)
@@ -10,7 +12,7 @@
 
       #Description
   
-      undefined
+      This is a simple ReadMe Generator!
 
     #Install
 
