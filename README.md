@@ -15,16 +15,13 @@
     #Install
 
 
-    NPM i
+    npm i
 
     #Information
 
-    This is a very simple readme 
+    this is a simple readme 
 
-    #Contributing
-
-
-    undefined
+   ![ReadMe Gif](ReadMe Generator.gif)
 
     #Tests
 
